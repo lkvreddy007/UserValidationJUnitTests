@@ -47,9 +47,15 @@ public class EmailValidatorTest {
 	}
 	
 	@Test
-	public void givenEmailAsVar_ShouldReturnAsPerParameter() {
+	public void givenEmailAsVar_ShouldReturnAsPerParameter() throws EmailInvalidException {
 		UserValidator validator=new UserValidator();
-		boolean result= validator.validateEmail(this.email);
-		Assert.assertEquals(this.expectedResult, result);
+		boolean result;
+		try {
+			result = validator.validateEmail(this.email);
+			Assert.assertEquals(this.expectedResult, result);
+		} 
+		catch (EmailInvalidException e) {
+			System.out.println(e);
+		}
 	}
 }
