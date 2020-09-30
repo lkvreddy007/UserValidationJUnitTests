@@ -16,28 +16,58 @@ public class UserValidator {
 		}
 	}
 	
-	public boolean validateFirstName(String fname) {
+	public boolean validateFirstName(String fname) throws FirstNameInvalidException {
 		Pattern pattern=Pattern.compile(NAME_PATTERN);
-		return pattern.matcher(fname).matches();
+		boolean b = pattern.matcher(fname).matches();
+		if(b) {
+			return b;
+		}
+		else {
+			throw new FirstNameInvalidException("Invalid FirstName");
+		}
 	}
 	
-	public boolean validateLastName(String lname) {
+	public boolean validateLastName(String lname) throws LastNameInvalidException {
 		Pattern pattern=Pattern.compile(NAME_PATTERN);
-		return pattern.matcher(lname).matches();
+		boolean b = pattern.matcher(lname).matches();
+		if(b) {
+			return b;
+		}
+		else {
+			throw new LastNameInvalidException("Invalid LastName");
+		}
 	}
 	
-	public boolean validateEmail(String email) {
+	public boolean validateEmail(String email) throws EmailInvalidException {
 		Pattern pattern=Pattern.compile(EMAIL_ID);
-		return pattern.matcher(email).matches();
+		boolean b = pattern.matcher(email).matches();
+		if(b) {
+			return b;
+		}
+		else {
+			throw new EmailInvalidException("Invalid EmailId");
+		}
 	}
 	
-	public boolean validatePhoneNo(String phoneno) {
+	public boolean validatePhoneNo(String phoneno) throws PhoneNumberInvalidException {
 		Pattern pattern=Pattern.compile(PHONENO);
-		return pattern.matcher(phoneno).matches();
+		boolean b = pattern.matcher(phoneno).matches();
+		if(b) {
+			return b;
+		}
+		else {
+			throw new PhoneNumberInvalidException("Invalid PhoneNumber");
+		}
 	}
 	
-	public boolean validatePassword(String password) {
+	public boolean validatePassword(String password) throws PasswordInvalidException {
 		Pattern pattern=Pattern.compile(PASSWORD);
-		return pattern.matcher(password).matches();
+		boolean b = pattern.matcher(password).matches();
+		if(b) {
+			return b;
+		}
+		else {
+			throw new PasswordInvalidException("Invalid Password");
+		}
 	}
 }
